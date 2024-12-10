@@ -21,6 +21,9 @@
         <tr th:each="product : ${products}">
             <td th:text="${product.product_id}"></td>
             <td th:text="${product.product_name}"></td>
+            <td>
+                <img th:src="@{'/images/' + ${product.image_url}}" class="card-img-top" alt="..." style="width: 100px; height: auto;">
+            </td>
             <td th:text="${product.price}"></td>
             <td>
                 <a th:href="@{/admin/products/edit/{id}(id=${product.product_id})}" class="btn btn-warning">Sửa</a>

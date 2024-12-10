@@ -23,6 +23,15 @@
             <label for="description" class="form-label">Mô tả</label>
             <textarea class="form-control" id="description" name="description" th:text="${product.description}"></textarea>
         </div>
+        <div class="mb-3">
+            <label for="image_url" class="form-label">Link hình ảnh</label>
+            <input type="text" class="form-control" id="image_url" name="image_url" th:value="${product.image_url}" placeholder="Nhập link hình ảnh">
+            <div th:if="${product.image_url}" class="mt-2">
+                <p>Hình ảnh hiện tại:</p>
+                <img th:src="@{'/images/' + ${product.image_url}}" class="card-img-top" alt="Hình ảnh sản phẩm" style="width: 100px; height: auto;">
+            </div>
+        </div>
+
         <button type="submit" class="btn btn-success">Lưu</button>
         <!-- Nút hủy chuyển về trang danh sách sản phẩm -->
         <a href="/admin/products" class="btn btn-secondary">Hủy</a>
