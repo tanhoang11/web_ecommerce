@@ -19,4 +19,8 @@ public class ViewController {
         model.addAttribute("products", products);
         return "index";
     }
+    @GetMapping("/admin")
+    public String showAdminDashboard() {
+        return "admin/admin_dashboard"; // Tên view của trang dashboard
+    }
 }

@@ -56,4 +56,6 @@ public class AdminController {
         productService.deleteProduct(id);
         return "redirect:/admin/products"; // Điều hướng lại đến trang danh sách sản phẩm
     }
+    // Hiển thị trang quản trị
+
 }
