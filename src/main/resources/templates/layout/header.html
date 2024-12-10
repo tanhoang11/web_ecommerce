@@ -1,0 +1,70 @@
+<header class="container">
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid justify-content-between">
+            <a href="/" class="navbar-brand">Navbar</a>
+            <form class="d-flex mx-auto" role="search" style="width: 50%;">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+            <div class="d-flex">
+                <a href="/login" class="btn btn-outline-primary me-2">Login</a>
+                <a href="/profile" class="btn btn-outline-secondary">Profile</a>                   
+            </div>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- All Departments Button -->
+            <button class="btn btn-success me-3">
+                <i class="fas fa-th-large"></i> All Departments
+            </button>    
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/" id="homeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Home
+                        </a>                        
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="shopDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Shop
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="shopDropdown">
+                            <li><a class="dropdown-item" href="#">Shop 1</a></li>
+                            <li><a class="dropdown-item" href="#">Shop 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="storesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Stores
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="storesDropdown">
+                            <li><a class="dropdown-item" href="#">Store 1</a></li>
+                            <li><a class="dropdown-item" href="#">Store 2</a></li>
+                        </ul>
+                    </li>                       
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Pages
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="pagesDropdown">
+                            <li><a class="dropdown-item" href="#">Page 1</a></li>
+                            <li><a class="dropdown-item" href="#">Page 2</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="accountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="accountDropdown">
+                            <li><a class="dropdown-item" href="#">Login</a></li>
+                            <li><a class="dropdown-item" href="#">Register</a></li>
+                        </ul>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>    
