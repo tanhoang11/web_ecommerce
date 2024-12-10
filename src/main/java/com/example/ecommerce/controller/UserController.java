@@ -3,62 +3,51 @@ package com.example.ecommerce.controller;
 import com.example.ecommerce.models.User;
 import com.example.ecommerce.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-import java.util.Optional;
-
-@RestController
-@RequestMapping("/api/users")
+@Controller
+@RequestMapping("/user")
 public class UserController {
 
-    private final UserService userService;
-
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
+    private UserService userService;
+
+    // Hiển thị form đăng ký
+    @GetMapping("/register")
+    public String showRegisterForm(Model model) {
+        model.addAttribute("user", new User());
+        return "user/register";
     }
 
-    @GetMapping
-    public ResponseEntity<List<User>> getAllUsers() {
-        List<User> users = userService.getAllUsers();
-        return new ResponseEntity<>(users, HttpStatus.OK);
+    // Xử lý đăng ký
+    @PostMapping("/register")
+    public String registerUser(@ModelAttribute User user, Model model) {
+        userService.registerUser(user);
+        model.addAttribute("successMessage", "Đăng ký thành công! Vui lòng đăng nhập.");
+        return "user/login";
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        Optional<User> user = userService.getUserById(id);
-        return user.map(value -> new ResponseEntity<>(value, HttpStatus.OK))
-                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    // Hiển thị form đăng nhập
+    @GetMapping("/login")
+    public String showLoginForm(Model model) {
+        model.addAttribute("user", new User());
+        return "user/login";
     }
 
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User savedUser = userService.saveUser(user);
-        return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
-    }
+    // Xử lý đăng nhập
+    @PostMapping("/login")
+    public String loginUser(@ModelAttribute User user, Model model) {
+        User foundUser = userService.findByUsername(user.getUsername())
+                .filter(u -> u.getPassword().equals(user.getPassword()))
+                .orElse(null);
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User userDetails) {
-        Optional<User> user = userService.getUserById(id);
-
-        if (user.isPresent()) {
-            User existingUser = user.get();
-            existingUser.setUsername(userDetails.getUsername());
-            existingUser.setPassword(userDetails.getPassword());
-
-            User updatedUser = userService.saveUser(existingUser);
-            return new ResponseEntity<>(updatedUser, HttpStatus.OK);
+        if (foundUser != null) {
+            return "redirect:/"; // Điều hướng đến trang chính
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            model.addAttribute("errorMessage", "Tên đăng nhập hoặc mật khẩu không đúng!");
+            return "user/login";
         }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
-        userService.deleteUser(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

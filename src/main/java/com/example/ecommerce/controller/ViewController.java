@@ -17,7 +17,7 @@ public class ViewController {
     public String getAllProducts(Model model) {
         List<Product> products = productService.getAllProducts();
         model.addAttribute("products", products);
-        return "index";
+        return "FoodMart-1.0.0/index";
     }
     @GetMapping("/admin")
     public String showAdminDashboard() {
