@@ -1,4 +1,4 @@
-package com.example.ecommerce.controller;
+package com.example.ecommerce.controller.client;
 
 import com.example.ecommerce.models.AdminUser;
 import com.example.ecommerce.service.AdminUserService;

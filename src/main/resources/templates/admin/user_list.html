@@ -17,6 +17,10 @@
             <th>ID</th>
             <th>Tên đăng nhập</th>
             <th>Mật Khẩu</th>
+            <th>Họ và tên</th>
+            <th>Ngày sinh</th>
+            <th>Địa chỉ</th>
+            <th>SĐT</th>
             <th>Email</th>
             <th>Hành động</th>
         </tr>
@@ -26,6 +30,10 @@
             <td th:text="${user.id}"></td>
             <td th:text="${user.username}"></td>
             <td th:text="${user.password}"></td>
+            <td th:text="${user.fullName}"></td>
+            <td th:text="${user.birthDate}"></td>
+            <td th:text="${user.address}"></td>
+            <td th:text="${user.phoneNumber}"></td>
             <td th:text="${user.email}"></td>
             <td>
                 <a th:href="@{/admin/users/edit/{id}(id=${user.id})}" class="btn btn-warning">Sửa</a>

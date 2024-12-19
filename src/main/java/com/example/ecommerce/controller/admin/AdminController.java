@@ -1,6 +1,5 @@
-package com.example.ecommerce.controller;
+package com.example.ecommerce.controller.admin;
 
-import com.example.ecommerce.models.AdminUser;
 import com.example.ecommerce.models.Product;
 import com.example.ecommerce.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;

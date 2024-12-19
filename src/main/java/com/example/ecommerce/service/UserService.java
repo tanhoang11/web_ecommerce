@@ -39,4 +39,8 @@ public class UserService {
     public void deleteUser(Long id) {
         userRepository.deleteById(id); // Xóa người dùng khỏi cơ sở dữ liệu
     }
+
+    public void save(User loggedInUser) {
+        userRepository.save(loggedInUser);
+    }
 }

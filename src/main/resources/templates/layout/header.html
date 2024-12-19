@@ -38,11 +38,31 @@
                 </div>
 
                 <ul class="d-flex justify-content-end list-unstyled m-0">
-                    <li>
-                        <a href="/user/login" class="rounded-circle bg-light p-2 mx-1">
-                            <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#user"></use></svg>
+                    <li class="d-flex align-items-center">
+                        <!-- Nếu người dùng chưa đăng nhập -->
+                        <a th:href="@{/user/login}" class="rounded-circle bg-light p-2 mx-1" th:if="${session.loggedInUser == null}">
+                            <svg width="24" height="24" viewBox="0 0 24 24">
+                                <use xlink:href="#user"></use>
+                            </svg>
                         </a>
+
+                        <!-- Nếu người dùng đã đăng nhập -->
+                        <div th:if="${session.loggedInUser != null}" class="d-flex">
+                            <!-- Link đến trang Profile -->
+                            <a th:href="@{/user/profile}" class="btn btn-outline-primary mx-1 py-2">
+                                Profile
+                            </a>
+
+                            <!-- Nút Đăng Xuất -->
+                            <form th:action="@{/user/logout}" method="get">
+                                <button type="submit" class="btn btn-danger mx-1 py-2">
+                                    Logout
+                                </button>
+                            </form>
+                        </div>
                     </li>
+
+
                     <li>
                         <a href="" class="rounded-circle bg-light p-2 mx-1">
                             <svg width="24" height="24" viewBox="0 0 24 24"><use xlink:href="#heart"></use></svg>

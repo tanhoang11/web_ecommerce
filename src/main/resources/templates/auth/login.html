@@ -52,7 +52,7 @@
             <input type="password" class="form-control" id="password" name="password" th:field="*{password}" required>
         </div>
         <button type="submit" class="btn btn-primary">Đăng Nhập</button>
-        <a href="/auth/register" class="btn btn-link">Chưa có tài khoản? Đăng ký</a>
+<!--        <a href="/auth/register" class="btn btn-link">Chưa có tài khoản? Đăng ký</a>-->
     </form>
     <div th:if="${errorMessage}" class="alert alert-danger mt-3" th:text="${errorMessage}"></div>
 </div>
